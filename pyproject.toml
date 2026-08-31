@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-cli"
+version = "0.1.0"
+description = "Simulateur quantique pédagogique basé sur Qiskit et Aer."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "qiskit",
+    "qiskit-aer",
+    "pytest",
+]
+
+[project.scripts]
+quantum-cli = "quantum_cli.__main__:main"
+
+[project.optional-dependencies]
+build = [
+    "pyinstaller>=6.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
